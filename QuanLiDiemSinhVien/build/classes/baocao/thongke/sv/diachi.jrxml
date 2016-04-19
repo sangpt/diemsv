@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DocGia" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3eab02c9-ad15-4c65-8058-03efd10f1abc">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="183"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -85,17 +85,21 @@
 	</style>
 	<subDataset name="abc" uuid="3ea11724-4229-44c7-ba08-569125527d44">
 		<queryString>
-			<![CDATA[select LopSV, count(*) as SoLuong from SV group by LopSV]]>
+			<![CDATA[select DiaChi, count(*) as SoLuong from SV group by DiaChi]]>
 		</queryString>
-		<field name="LopSV" class="java.lang.String"/>
-		<field name="SoLuong" class="java.lang.Integer"/>
+		<field name="DiaChi" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="SoLuong" class="java.lang.Long"/>
 	</subDataset>
 	<parameter name="name" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select LopSV, count(*) as SoLuong from SV group by LopSV]]>
+		<![CDATA[select DiaChi, count(*) as SoLuong from SV group by DiaChi]]>
 	</queryString>
-	<field name="LopSV" class="java.lang.String"/>
-	<field name="SoLuong" class="java.lang.Integer"/>
+	<field name="DiaChi" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SoLuong" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -141,16 +145,16 @@
 				<text><![CDATA[Thống Kê Sinh Viên]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="212" y="47" width="149" height="26" uuid="525ee761-fdfe-4808-b3c5-222346f13466"/>
+				<reportElement x="224" y="47" width="149" height="26" uuid="525ee761-fdfe-4808-b3c5-222346f13466"/>
 				<textElement>
 					<font fontName="Serif" size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[theo Lớp Sinh Viên]]></text>
+				<text><![CDATA[theo Địa chỉ]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="145" splitType="Stretch">
+		<band height="197" splitType="Stretch">
 			<componentElement>
 				<reportElement key="table 3" style="table 3" x="52" y="0" width="360" height="80" uuid="f1e1dd6a-5c61-4191-bbda-2e4e84177521"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -162,14 +166,14 @@
 							<staticText>
 								<reportElement x="0" y="0" width="236" height="30" uuid="c2b02bb2-a8ff-4e40-99eb-5fc95cf1e16a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[LopSV]]></text>
+								<text><![CDATA[DiaChi]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="236" height="20" uuid="76ed0ab6-87e1-4bf3-9139-74e0e25642b4"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{LopSV}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{DiaChi}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -194,21 +198,35 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="86">
+		<band height="140">
 			<printWhenExpression><![CDATA[$V{REPORT_COUNT} == 1]]></printWhenExpression>
 			<staticText>
-				<reportElement x="383" y="12" width="159" height="31" uuid="58cb30c0-8ade-495d-a053-eecd3ff97c67"/>
+				<reportElement x="383" y="55" width="159" height="31" uuid="58cb30c0-8ade-495d-a053-eecd3ff97c67"/>
 				<textElement>
 					<font fontName="Serif" size="18" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Người lập bảng]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="412" y="61" width="105" height="25" uuid="acf97611-6ded-49e9-83d3-75a31973adac"/>
+				<reportElement x="383" y="115" width="172" height="25" uuid="acf97611-6ded-49e9-83d3-75a31973adac"/>
 				<textElement>
 					<font fontName="Serif" size="18" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="355" y="34" width="98" height="32" uuid="325fc0e9-69cf-4f7d-9f73-3fe5afaf6720"/>
+				<textElement>
+					<font fontName="Serif" size="18"/>
+				</textElement>
+				<text><![CDATA[Hà Nội, ngày ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="34" width="100" height="32" uuid="5573e941-32ee-4411-baed-4755e09ebdab"/>
+				<textElement>
+					<font fontName="Serif" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DocGia" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3eab02c9-ad15-4c65-8058-03efd10f1abc">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -92,9 +92,9 @@
 	</subDataset>
 	<parameter name="name" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select LopSV, count(*) as SoLuong from SV group by LopSV]]>
+		<![CDATA[select GioiTinh, count(*) as SoLuong from SV group by GioiTinh]]>
 	</queryString>
-	<field name="LopSV" class="java.lang.String"/>
+	<field name="GioiTinh" class="java.lang.String"/>
 	<field name="SoLuong" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -134,7 +134,7 @@
 	<pageHeader>
 		<band height="129" splitType="Stretch">
 			<staticText>
-				<reportElement x="179" y="17" width="204" height="30" uuid="fec07f31-3762-4a07-bc64-30749365cb79"/>
+				<reportElement x="179" y="17" width="233" height="30" uuid="fec07f31-3762-4a07-bc64-30749365cb79"/>
 				<textElement>
 					<font fontName="Serif" size="22" isBold="true"/>
 				</textElement>
@@ -154,8 +154,8 @@
 			<componentElement>
 				<reportElement key="table 3" style="table 3" x="52" y="0" width="360" height="80" uuid="f1e1dd6a-5c61-4191-bbda-2e4e84177521"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="abc" uuid="be1cf32c-1790-455f-b576-35f15ad407da">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<datasetRun subDataset="abc" uuid="2e8d4ac7-35f7-44ca-a691-a36d8d262186">
+						<dataSourceExpression><![CDATA[$P{REPORT_DATA_SOURCE}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="236" uuid="47b3dc54-3cbe-4a6b-8848-1fdf66ad45e1">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
@@ -194,21 +194,35 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="86">
+		<band height="164">
 			<printWhenExpression><![CDATA[$V{REPORT_COUNT} == 1]]></printWhenExpression>
 			<staticText>
-				<reportElement x="383" y="12" width="159" height="31" uuid="58cb30c0-8ade-495d-a053-eecd3ff97c67"/>
+				<reportElement x="383" y="75" width="159" height="31" uuid="58cb30c0-8ade-495d-a053-eecd3ff97c67"/>
 				<textElement>
 					<font fontName="Serif" size="18" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Người lập bảng]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="412" y="61" width="105" height="25" uuid="acf97611-6ded-49e9-83d3-75a31973adac"/>
+				<reportElement x="383" y="139" width="172" height="25" uuid="acf97611-6ded-49e9-83d3-75a31973adac"/>
 				<textElement>
 					<font fontName="Serif" size="18" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="355" y="43" width="104" height="32" uuid="91d382e6-569f-4227-8a34-1fd8a60c986f"/>
+				<textElement>
+					<font fontName="Serif" size="18"/>
+				</textElement>
+				<text><![CDATA[Hà Nội, ngày ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="459" y="43" width="100" height="32" uuid="46bb9906-7757-4e7f-a8a2-ae7ec8fb48a0"/>
+				<textElement>
+					<font fontName="Serif" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
