@@ -34,7 +34,7 @@ public class ThemDiem extends javax.swing.JFrame {
                 jComboBox1.addItem(rs.getString("MaLop"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(testThem.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ThemDiem.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -49,7 +49,7 @@ public class ThemDiem extends javax.swing.JFrame {
                 jComboBox2.addItem(rs.getString("MaSV"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(testThem.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ThemDiem.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -96,7 +96,7 @@ public class ThemDiem extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Mã lớp");
@@ -253,14 +253,14 @@ public class ThemDiem extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            String sql = "insert into Diem values (?,?,?,?,0)";
+            String sql = "insert into Diem (MaLop, MaSV, diemqt, diemck)  values (?,?,?,?)";
             KetNoi kn = new KetNoi();
             Connection con = kn.getConnectionToSQL();
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, (String) jComboBox1.getSelectedItem());
             pst.setString(2, (String) jComboBox2.getSelectedItem());
-            pst.setString(3, jTextField3.getText());
-            pst.setString(4, jTextField4.getText());
+            pst.setFloat(3, Float.parseFloat(jTextField3.getText()));
+            pst.setFloat(4, Float.parseFloat(jTextField4.getText()));
             //pst.setString(5, jTextField5.getText());
             pst.executeUpdate();
         } catch (SQLException ex) {

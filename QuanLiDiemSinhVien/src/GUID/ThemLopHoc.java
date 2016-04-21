@@ -39,7 +39,7 @@ public class ThemLopHoc extends javax.swing.JFrame {
                 jComboBox1.addItem(rs.getString("MaHP"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(testThem.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ThemLopHoc.class.getName()).log(Level.SEVERE, null, ex);
         }
         //return  a;
     }
@@ -55,7 +55,7 @@ public class ThemLopHoc extends javax.swing.JFrame {
                 jComboBox2.addItem(rs.getString("MaGV"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(testThem.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ThemLopHoc.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -93,7 +93,7 @@ public class ThemLopHoc extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Mã lớp");

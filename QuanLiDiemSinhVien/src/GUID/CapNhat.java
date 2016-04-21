@@ -49,7 +49,7 @@ public class CapNhat extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 21)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
@@ -64,7 +64,6 @@ public class CapNhat extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pham Tuan Sang\\Desktop\\Photo for Design Form\\Yes.png")); // NOI18N
         jButton1.setText("Đồng ý");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +72,6 @@ public class CapNhat extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pham Tuan Sang\\Desktop\\Photo for Design Form\\No.png")); // NOI18N
         jButton2.setText("Thoát");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
