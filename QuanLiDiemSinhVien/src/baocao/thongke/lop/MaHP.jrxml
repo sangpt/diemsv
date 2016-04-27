@@ -85,9 +85,9 @@
 	</style>
 	<subDataset name="abc" uuid="3ea11724-4229-44c7-ba08-569125527d44">
 		<queryString>
-			<![CDATA[select LopSV, count(*) as SoLuong from SV group by LopSV]]>
+			<![CDATA[select MaHP, count(*) as SoLuong from Lop group by MaHP]]>
 		</queryString>
-		<field name="LopSV" class="java.lang.String"/>
+		<field name="MaHP" class="java.lang.String"/>
 		<field name="SoLuong" class="java.lang.Integer"/>
 	</subDataset>
 	<parameter name="name" class="java.lang.String"/>
@@ -138,14 +138,14 @@
 				<textElement>
 					<font fontName="Serif" size="22" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Thống Kê Sinh Viên]]></text>
+				<text><![CDATA[Thống Kê Lớp Học]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="212" y="47" width="149" height="26" uuid="525ee761-fdfe-4808-b3c5-222346f13466"/>
 				<textElement>
 					<font fontName="Serif" size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[theo Lớp Sinh Viên]]></text>
+				<text><![CDATA[theo Mã học Phần]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
@@ -162,14 +162,14 @@
 							<staticText>
 								<reportElement x="0" y="0" width="236" height="30" uuid="c2b02bb2-a8ff-4e40-99eb-5fc95cf1e16a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[LopSV]]></text>
+								<text><![CDATA[MaHP]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="236" height="20" uuid="76ed0ab6-87e1-4bf3-9139-74e0e25642b4"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{LopSV}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{MaHP}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

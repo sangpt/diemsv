@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DocGia" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3eab02c9-ad15-4c65-8058-03efd10f1abc">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="81"/>
+	<property name="ireport.y" value="33"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -194,21 +194,35 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="86">
+		<band height="154">
 			<printWhenExpression><![CDATA[$V{REPORT_COUNT} == 1]]></printWhenExpression>
 			<staticText>
-				<reportElement x="383" y="12" width="159" height="31" uuid="58cb30c0-8ade-495d-a053-eecd3ff97c67"/>
+				<reportElement x="393" y="65" width="159" height="31" uuid="58cb30c0-8ade-495d-a053-eecd3ff97c67"/>
 				<textElement>
 					<font fontName="Serif" size="18" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Người lập bảng]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="412" y="61" width="105" height="25" uuid="acf97611-6ded-49e9-83d3-75a31973adac"/>
+				<reportElement x="393" y="129" width="159" height="25" uuid="acf97611-6ded-49e9-83d3-75a31973adac"/>
 				<textElement>
 					<font fontName="Serif" size="18" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="369" y="33" width="98" height="32" uuid="6d905cf5-e189-445f-b4e1-f6e9282843a3"/>
+				<textElement>
+					<font fontName="Serif" size="18"/>
+				</textElement>
+				<text><![CDATA[Hà Nội, ngày ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="469" y="33" width="100" height="32" uuid="0caa4235-56be-41f6-bf9f-eaf7ae41fc8b"/>
+				<textElement>
+					<font fontName="Serif" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

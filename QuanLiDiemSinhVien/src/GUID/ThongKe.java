@@ -245,8 +245,8 @@ public class ThongKe extends javax.swing.JFrame {
             jComboBox2.removeAllItems();
             jComboBox2.addItem("MaLop");
             jComboBox2.addItem("MaSV");
-            jComboBox2.addItem("MaKyHoc");
-            //jComboBox2.addItem("TinhTrang");
+            jComboBox2.addItem("DiemSo");
+            jComboBox2.addItem("DiemChu");
         }
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
@@ -297,32 +297,72 @@ public class ThongKe extends javax.swing.JFrame {
 
             }
         }
-        /*else {
+        else if(jComboBox1.getSelectedIndex()==1) {
             if(jComboBox2.getSelectedIndex()==0){
                 HashMap h = new HashMap();
                 h.put("name", Main.nameee);
-                Report rp = new Report("C:\\Users\\Pham Tuan Sang\\Desktop\\QuanLyThuVien\\src\\baocao\\thongke\\muontra\\MaDocGia.jasper", h);
+                Report rp = new Report("src/baocao/thongke/gv/vien.jasper", h);
 
             }
             if(jComboBox2.getSelectedIndex()==1){
                 HashMap h = new HashMap();
                 h.put("name", Main.nameee);
-                Report rp = new Report("C:\\Users\\Pham Tuan Sang\\Desktop\\QuanLyThuVien\\src\\baocao\\thongke\\muontra\\MaSach.jasper", h);
+                Report rp = new Report("src/baocao/thongke/gv/gioitinh.jasper", h);
 
             }
             if(jComboBox2.getSelectedIndex()==2){
                 HashMap h = new HashMap();
                 h.put("name", Main.nameee);
-                Report rp = new Report("C:\\Users\\Pham Tuan Sang\\Desktop\\QuanLyThuVien\\src\\baocao\\thongke\\muontra\\SoNgayQuaHan.jasper", h);
+                Report rp = new Report("src/baocao/thongke/gv/diachi.jasper", h);
+
+            }       
+        }
+        else if(jComboBox1.getSelectedIndex()==2){
+            if(jComboBox2.getSelectedIndex()==0){
+                HashMap h = new HashMap();
+                h.put("name", Main.nameee);
+                Report rp = new Report("src/baocao/thongke/lop/MaHP.jasper", h);
+
+            }
+            if(jComboBox2.getSelectedIndex()==1){
+                HashMap h = new HashMap();
+                h.put("name", Main.nameee);
+                Report rp = new Report("src/baocao/thongke/lop/MaGV.jasper", h);
+
+            }
+            if(jComboBox2.getSelectedIndex()==2){
+                HashMap h = new HashMap();
+                h.put("name", Main.nameee);
+                Report rp = new Report("src/baocao/thongke/lop/MaKyHoc.jasper", h);
+
+            }
+        }
+        else if(jComboBox1.getSelectedIndex()==4){
+            if(jComboBox2.getSelectedIndex()==0){
+                HashMap h = new HashMap();
+                h.put("name", Main.nameee);
+                Report rp = new Report("src/baocao/thongke/diem/malop.jasper", h);
+
+            }
+            if(jComboBox2.getSelectedIndex()==1){
+                HashMap h = new HashMap();
+                h.put("name", Main.nameee);
+                Report rp = new Report("src/baocao/thongke/diem/masv.jasper", h);
+
+            }
+            if(jComboBox2.getSelectedIndex()==2){
+                HashMap h = new HashMap();
+                h.put("name", Main.nameee);
+                Report rp = new Report("src/baocao/thongke/diem/diemso.jasper", h);
 
             }
             if(jComboBox2.getSelectedIndex()==3){
                 HashMap h = new HashMap();
                 h.put("name", Main.nameee);
-                Report rp = new Report("C:\\Users\\Pham Tuan Sang\\Desktop\\QuanLyThuVien\\src\\baocao\\thongke\\muontra\\TinhTrang.jasper", h);
+                Report rp = new Report("src/baocao/thongke/diem/diemchu.jasper", h);
 
             }
-        }*/
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed

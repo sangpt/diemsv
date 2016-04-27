@@ -50,7 +50,7 @@ public class Report extends JFrame {
             Class.forName("com.mysql.jdbc.Driver");
         
             try {
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/diemsv", "root", "");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/diemsv?characterEncoding=utf8", "root", "");
             } catch (SQLException ex) {
                 Logger.getLogger(Report.class.getName()).log(Level.SEVERE, null, ex);
             }

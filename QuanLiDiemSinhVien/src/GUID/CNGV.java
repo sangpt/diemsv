@@ -5,7 +5,6 @@
  */
 package GUID;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -35,7 +35,8 @@ public class CNGV extends javax.swing.JFrame {
     String key;
     int RowCount, row, col;
     String txtRowCount;
-    public DefaultTableModel createModel(){
+
+    public DefaultTableModel createModel() {
         DefaultTableModel model = new DefaultTableModel();
         KetNoi kn = new KetNoi();
         Connection con = kn.getConnectionToSQL();
@@ -44,22 +45,23 @@ public class CNGV extends javax.swing.JFrame {
             ResultSetMetaData rsmd = rs.getMetaData();
             int colNumber = rsmd.getColumnCount();
             String[] arr = new String[colNumber];
-            for (int i = 0; i <colNumber; i++) {
-                arr[i] = rsmd.getColumnName(i+1);
+            for (int i = 0; i < colNumber; i++) {
+                arr[i] = rsmd.getColumnName(i + 1);
             }
             model.setColumnIdentifiers(arr);
-            while(rs.next()){
-                for (int i = 0; i <colNumber; i++) {
-                    arr[i] = rs.getString(i+1);
-                    
+            while (rs.next()) {
+                for (int i = 0; i < colNumber; i++) {
+                    arr[i] = rs.getString(i + 1);
+
                 }
                 model.addRow(arr);
             }
         } catch (SQLException ex) {
             Logger.getLogger(CNGV.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
         return model;
-}
+    }
+
     public CNGV() {
         initComponents();
     }
@@ -87,6 +89,7 @@ public class CNGV extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -223,6 +226,15 @@ public class CNGV extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Info.png"))); // NOI18N
+        jButton7.setText("Danh sách Viện");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -234,6 +246,8 @@ public class CNGV extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jButton6)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -244,16 +258,18 @@ public class CNGV extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
 
@@ -281,25 +297,37 @@ public class CNGV extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            try {
+        try {
             String a = "";
-            switch(col+1){ 
-                case 1: a = "MaGV"; break;
-                case 2: a = "HoTen"; break;
-                case 3: a = "Vien"; break;
-                case 4: a = "NgaySinh"; break;
-                case 5: a = "GioiTinh"; break;
-                case 6: a = "DiaChi"; break;
+            switch (col + 1) {
+                case 1:
+                    a = "MaGV";
+                    break;
+                case 2:
+                    a = "HoTen";
+                    break;
+                case 3:
+                    a = "Vien";
+                    break;
+                case 4:
+                    a = "NgaySinh";
+                    break;
+                case 5:
+                    a = "GioiTinh";
+                    break;
+                case 6:
+                    a = "DiaChi";
+                    break;
             }
             String sql = "update GV set " + a + " =? where MaGV=?";
             KetNoi kn = new KetNoi();
             Connection con = kn.getConnectionToSQL();
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, JOptionPane.showInputDialog("Nhập dữ liệu mới cho " + a + " của giảng viên " +(String) jTable1.getValueAt(row, 0), jTable1.getValueAt(row, col)));
+            pst.setString(1, JOptionPane.showInputDialog("Nhập dữ liệu mới cho " + a + " của giảng viên " + (String) jTable1.getValueAt(row, 0), jTable1.getValueAt(row, col)));
             pst.setString(2, (String) jTable1.getValueAt(row, 0));
             pst.executeUpdate();
-            } catch (SQLException ex) {
-                Logger.getLogger(CNGV.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(CNGV.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -313,7 +341,7 @@ public class CNGV extends javax.swing.JFrame {
         jTable1.setModel(createModel());
         txtRowCount = String.valueOf(jTable1.getRowCount());
         jLabel2.setText(txtRowCount);
-        
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -323,11 +351,10 @@ public class CNGV extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(key==null){
+        if (key == null) {
             JOptionPane.showMessageDialog(null, "Chọn giảng viên bạn muốn xóa.");
             return;
-        }
-        else if(JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa giảng viên " + key + " ?", "Xác nhận xóa?", 2)==0){
+        } else if (JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa giảng viên " + key + " ?", "Xác nhận xóa?", 2) == 0) {
             String sql = "delete from GV where MaGV='" + key + "'";
             KetNoi.updateDataSQL(sql);
             JOptionPane.showMessageDialog(null, "Xóa thành công!");
@@ -340,62 +367,74 @@ public class CNGV extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTable1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable1InputMethodTextChanged
-        
+
     }//GEN-LAST:event_jTable1InputMethodTextChanged
 
     private void jTable1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTable1PropertyChange
-        
+
     }//GEN-LAST:event_jTable1PropertyChange
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        JFileChooser fc = new JFileChooser(); 
+        JFileChooser fc = new JFileChooser();
         fc.setAcceptAllFileFilterUsed(false);
         fc.addChoosableFileFilter(new ImageFilter());
         fc.setBounds(10, 10, 500, 500);
         int value = fc.showOpenDialog(null);
         File file = fc.getSelectedFile();
-        if(value == JFileChooser.OPEN_DIALOG){
-               file = fc.getSelectedFile();                
+        if (value == JFileChooser.OPEN_DIALOG) {
+            file = fc.getSelectedFile();
         }
-        if(value == JFileChooser.CANCEL_OPTION){
+        if (value == JFileChooser.CANCEL_OPTION) {
             //JOptionPane.showMessageDialog(null, "Chọn file excel cần nhập");
-            return ;
+            return;
         }
-          try {
+        try {
             //File file = new File("E:\\demo.xls");
             Workbook wb = Workbook.getWorkbook(file);
             Sheet sheet = wb.getSheet(0);
             int rows = sheet.getRows();
             int cols = sheet.getColumns();
-            for(int row1 = 2; row1 < rows; row1++) {
+            for (int row1 = 2; row1 < rows; row1++) {
 //                for(int col = 0; col < cols; col++) {
-                    
+
 //                    System.out.print(sheet.getCell(col, row).getContents()+" ");
-                    try {
-                        String sql = "insert into GV values (?,?,?,?,?,?)";
-                        KetNoi kn = new KetNoi();
-                        Connection con = kn.getConnectionToSQL();
-                        PreparedStatement pst = con.prepareStatement(sql);
-                        pst.setString(1, sheet.getCell(0, row1).getContents());
-                        pst.setString(2, sheet.getCell(1, row1).getContents());
-                        pst.setString(3, sheet.getCell(2, row1).getContents());
-                        pst.setString(4, sheet.getCell(3, row1).getContents());
-                        pst.setString(5, sheet.getCell(4, row1).getContents());
-                        pst.setString(6, sheet.getCell(5, row1).getContents());
-                        pst.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(CNSV.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Thêm lỗi!");
-            break;
-        }
+                try {
+                    String sql = "insert into GV values (?,?,?,?,?,?)";
+                    KetNoi kn = new KetNoi();
+                    Connection con = kn.getConnectionToSQL();
+                    PreparedStatement pst = con.prepareStatement(sql);
+                    pst.setString(1, sheet.getCell(0, row1).getContents());
+                    pst.setString(2, sheet.getCell(1, row1).getContents());
+                    pst.setString(3, sheet.getCell(2, row1).getContents());
+                    pst.setString(4, sheet.getCell(3, row1).getContents());
+                    pst.setString(5, sheet.getCell(4, row1).getContents());
+                    pst.setString(6, sheet.getCell(5, row1).getContents());
+                    pst.executeUpdate();
+                } catch (SQLException ex) {
+                    Logger.getLogger(CNSV.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "Thêm lỗi!");
+                    break;
+                }
 //                }
-    
+
             }
-            } catch (IOException | BiffException | IndexOutOfBoundsException ex) {
-                Logger.getLogger(CNSV.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException | BiffException | IndexOutOfBoundsException ex) {
+            Logger.getLogger(CNSV.class.getName()).log(Level.SEVERE, null, ex);
         }
-          JOptionPane.showMessageDialog(null, "Nhập file excel thành công!");
+        JOptionPane.showMessageDialog(null, "Nhập file excel thành công!");
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        if (jTable1.getSelectedRow() >= 0) {
+            HashMap h = new HashMap();
+            System.out.println(jTable1.getValueAt(jTable1.getSelectedRow(), 2));
+            h.put("value", jTable1.getValueAt(jTable1.getSelectedRow(), 2));
+            h.put("name", Main.nameee);
+            Report rp = new Report("src/baocao/etc/dsvien.jasper", h);
+        } else {
+            JOptionPane.showMessageDialog(null, "Chọn Viện cần xem");
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -454,6 +493,7 @@ public class CNGV extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

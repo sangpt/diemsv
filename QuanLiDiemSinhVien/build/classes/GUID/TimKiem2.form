@@ -91,7 +91,7 @@
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jComboBox1" pref="116" max="32767" attributes="0"/>
+                  <Component id="jComboBox1" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -141,12 +141,13 @@
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
+              <StringArray count="6">
                 <StringItem index="0" value="SV"/>
                 <StringItem index="1" value="GV"/>
                 <StringItem index="2" value="HP"/>
                 <StringItem index="3" value="Lop"/>
                 <StringItem index="4" value="Diem"/>
+                <StringItem index="5" value="Theo H&#x1ecd;c K&#x1ef3;"/>
               </StringArray>
             </Property>
           </Properties>
